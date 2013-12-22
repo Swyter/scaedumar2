@@ -1,3 +1,5 @@
+from module_info import *
+
 sf_day        = 0x00000000
 sf_dawn       = 0x00000001
 sf_night      = 0x00000002
@@ -63,7 +65,7 @@ skyboxes = [
 
 
 def save_skyboxes():
-  file = open("./skyboxes.txt","w")
+  file = open("../"+export_dir+"/data/skyboxes.txt","w+")
   file.write("%d\n"%len(skyboxes))
   for skybox in  skyboxes:
     file.write("%s %d %f %f %f %s\n"%(skybox[0],skybox[1],skybox[2],skybox[3],skybox[4],skybox[5]))

@@ -1,3 +1,4 @@
+from module_info import *
 import string
 
 dword      = 0x8000000000000000
@@ -144,7 +145,7 @@ fauna_kinds = [
 
 
 def save_fauna_kinds():
-  file = open("./flora_kinds.txt","w")
+  file = open("../"+export_dir+"/data/flora_kinds.txt","w")
   file.write("%d\n"%len(fauna_kinds))
   for fauna_kind in fauna_kinds:
     meshes_list = fauna_kind[2]

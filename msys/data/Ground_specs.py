@@ -1,3 +1,5 @@
+from module_info import *
+
 gtf_overlay = 0x00000001 #deprecated
 gtf_dusty   = 0x00000002 #controls dustiness of the ground for foot dust particle systems 
 gtf_has_color  = 0x00000004 #you can overwrite the ambient color of the ground spec (default: 0.61, 0.72, 0.15)
@@ -26,7 +28,7 @@ def write_vec(file,vec):
   file.write(" %f %f %f "%vec)
   
 def save_ground_specs():
-  file = open("./ground_specs.txt","w")
+  file = open("../"+export_dir+"/data/ground_specs.txt","w")
   for ground_spec in ground_specs:
     file.write(" %s %d %s %f %s"%(ground_spec[0],ground_spec[1],ground_spec[2],ground_spec[3],ground_spec[4]))
     if (ground_spec[1] & gtf_has_color):
@@ -48,7 +50,7 @@ def save_c_header():
   file.close()
   
 def save_python_header():
-  file = open("../Module_system/header_ground_types.py","w")
+  file = open("../header/header_ground_types.py","w")
   for ig in xrange(len(ground_specs)):
     ground_spec = ground_specs[ig]
     file.write("ground_%s = %d\n"%(ground_spec[0], ig))
