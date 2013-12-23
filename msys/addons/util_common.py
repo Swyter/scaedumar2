@@ -97,3 +97,20 @@ def inverted_list_dict(d):
 # assumes 1-1 mapping between keys and values
 def inverted_dict(d):
     return dict([v,k] for k,v in d.iteritems())
+
+	
+	
+	
+
+##Caba'drin Addition
+def list_find_first_containing_i(objlist,obj_id):
+  result = -1
+  num_objects = len(objlist)
+  i_object = 0
+  object_id_lowercase = obj_id.lower()
+  while (i_object < num_objects) and (result == -1):
+    object = objlist[i_object]
+    if (object_id_lowercase in object[0].lower()):
+      result = i_object
+    i_object += 1
+  return result
