@@ -5,12 +5,12 @@
 # -1 : print errors and warnings
 # 0 : print errors, warnings and info
 # 1 : print all
-DEBUG_MODE = -1
+DEBUG_MODE = 1
 
 # fill this in yourself with the module system you are using, so that some mods can make smarter decisions on how to merge with your source.
 module_sys_info = {
         "engine" : "warband", # only "warband" or "vanilla" for now. (unused)
-        "version": 1127,      # version number * 1000
+        "version": 1158,      # version number * 1000
 }
 
 options={
@@ -28,6 +28,13 @@ mods_active = [
 #    "mod1",
 #    "mymod",
 #    "anothermod",
+     "bridgebattles",
+     "customcommanderkit",
+     "diplomacy",
+     "freelancer",
+     "outposts",
+     "pbod",
+     "seafaring",
 ]
 
 
