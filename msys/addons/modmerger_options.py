@@ -5,7 +5,7 @@
 # -1 : print errors and warnings
 # 0 : print errors, warnings and info
 # 1 : print all
-DEBUG_MODE = 1
+DEBUG_MODE = -1
 
 # fill this in yourself with the module system you are using, so that some mods can make smarter decisions on how to merge with your source.
 module_sys_info = {
@@ -59,4 +59,4 @@ try:
     module_sys_info["version"]
 except KeyError:
     # assume version to be latest version that modmerger was tested on
-    module_sys_info["version"] = 1127
+    module_sys_info["version"] = 1143
