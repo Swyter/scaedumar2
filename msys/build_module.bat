@@ -1,6 +1,6 @@
 @echo off && title compiling scaedumar 2 --
 set PATH="C:\Python24","C:\Python25";"C:\Python26";"C:\Python27";%PATH%
-set PYTHONPATH=%cd%;%cd%\data;%cd%\header;%cd%\id;%cd%\process;%cd%\addons
+set PYTHONPATH=%cd%;%cd%\data;%cd%\header;%cd%\id;%cd%\process;%cd%\addons;%cd%\addons\freelancer
 :start
 cls
 python  -B -OO  process\process_init.py
