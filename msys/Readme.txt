@@ -1,4 +1,4 @@
-Mount&Blade Module System
+Mount&Blade Module System 1.158 -- Scaedumar 2 boilerplate
 
 For getting documentation and the latest version of the module system check out:
 
