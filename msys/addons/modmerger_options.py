@@ -28,13 +28,13 @@ mods_active = [
 #    "mod1",
 #    "mymod",
 #    "anothermod",
-     "bridgebattles",
-     "customcommanderkit",
-     "diplomacy",
+     # "bridgebattles",
+     # "customcommanderkit",
+     # "diplomacy",
      "freelancer",
-     "outposts",
-     "pbod",
-     "seafaring",
+     # "outkit",
+     # "pbod",
+     # "seafaring",
 ]
 
 
