@@ -22,8 +22,7 @@ map_icons = [
 def modmerge(var_set):
     try:
         var_name_1 = "map_icons"
-        orig_map_icons = var_set[var_name_1]
-        orig_map_icons.extend(map_icons) 
+        var_set[var_name_1].extend(map_icons) 
     except KeyError:
         errstring = "Variable set does not contain expected variable: \"%s\"." % var_name_1
         raise ValueError(errstring)

@@ -245,13 +245,46 @@ scripts = [
   ]),
  #-## Outposts end
 ]
+
+
+from util_wrappers import *
+from util_scripts import *
  
 # Used by modmerger framework version >= 200 to merge stuff
 def modmerge(var_set):
     try:
         var_name_1 = "scripts"
+        
+        #swy--append the rest of scripts at the end
         orig_scripts = var_set[var_name_1]
         orig_scripts.extend(scripts) 
+        
+        
+        #swy--inject the fort and outpost encounter hooks after the cattle conditions
+        scripts_directives = [
+          [
+            SD_OP_BLOCK_INSERT,
+            "game_event_party_encounter",
+            D_SEARCH_FROM_TOP | D_SEARCH_SCRIPTLINE | D_INSERT_AFTER,
+            
+            (jump_to_menu, "mnu_cattle_herd"), 0,
+            
+            [	#-## Outposts begin
+                 (else_try),
+                       (party_slot_eq, "$g_encountered_party", slot_party_type, spt_outpost),
+                       (jump_to_menu, "mnu_outpost"),
+                 (else_try),
+                       (party_slot_eq, "$g_encountered_party", slot_party_type, spt_fort),
+                 (jump_to_menu, "mnu_fort"),
+              #-## Outposts end
+            ]
+          ]
+        ]
+        
+        process_script_directives(orig_scripts, scripts_directives)
+        
+        
+        
     except KeyError:
         errstring = "Variable set does not contain expected variable: \"%s\"." % var_name_1
         raise ValueError(errstring)
