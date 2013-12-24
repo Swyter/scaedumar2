@@ -84,12 +84,18 @@ dialogs	= [
 #-## Outposts end  
 ]
 
+from util_common import *
+from util_wrappers import *
+
 # Used by modmerger framework version >= 200 to merge stuff
 def modmerge(var_set):
     try:
 		var_name_1 = "dialogs"
 		orig_dialogs = var_set[var_name_1]
-		orig_dialogs.extend(dialogs)
+    
+    #swy--add our new dialogs just before the generic fallbacks
+		pos = FindDialog_i(orig_dialogs, anyone|plyr, "regular_member_talk")
+		OpBlockWrapper(orig_dialogs).InsertAfter(pos, dialogs)
 		
     except KeyError:
         errstring = "Variable set does not contain expected variable: \"%s\"." % var_name_1
