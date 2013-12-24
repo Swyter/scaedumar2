@@ -669,12 +669,10 @@ def modmerge(var_set):
         orig_game_menus = var_set[var_name_1]
         
         
-        #swy--insert new menu option in the camp menu!
+        #swy--insert new menu option in the camp menu as its third option!
         try:
           find_i = list_find_first_match_i(orig_game_menus, "camp_action")
-          
-          codeblock = GameMenuWrapper(orig_game_menus[find_i]).GetMenuOptions()
-          codeblock.extend(outkit_camp_menu)
+          GameMenuWrapper(orig_game_menus[find_i]).GetMenuOptions().insert(3-1,outkit_camp_menu[0])
 
         except:
           import sys
