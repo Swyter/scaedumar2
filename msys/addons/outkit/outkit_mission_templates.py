@@ -3,6 +3,17 @@
 #        Place them in module_mission+_templates. At the end is good.
 #-#######################################
 
+from header_common import *
+from header_operations import *
+from header_mission_templates import *
+from module_constants import *
+from header_music import *
+from header_sounds import *
+
+pilgrim_disguise = [itm_pilgrim_hood,itm_pilgrim_disguise,itm_practice_staff, itm_throwing_daggers]
+
+
+mission_templates = [
 #-## Outposts begin
   (
     "fort_visit",0,-1,
@@ -151,3 +162,14 @@
     ],
   ),
 #-## Outposts end
+]
+
+# Used by modmerger framework version >= 200 to merge stuff
+def modmerge(var_set):
+    try:
+        var_name_1 = "mission_templates"
+        orig_mission_templates = var_set[var_name_1]
+        orig_mission_templates.extend(mission_templates) 
+    except KeyError:
+        errstring = "Variable set does not contain expected variable: \"%s\"." % var_name_1
+        raise ValueError(errstring)

@@ -10,10 +10,17 @@
 # There's also a possible bug with the beginning merchant's dialogs,
 # if you put these too much to the start of the file.
 
-
+# -*- coding: cp1254 -*-
+from header_common import *
+from header_dialogs import *
+from header_operations import *
+from module_constants import *
+from header_parties import *
+from ID_troops import *
 
 #-## Outposts begin
 # Lumos: Patrol talks. I added some fuctions
+dialogs	= [   
   [anyone ,"start",
     [(this_or_next|party_slot_eq, "p_outpost_1", slot_outpost_patrol, "$g_encountered_party"),
 	 (this_or_next|party_slot_eq, "p_outpost_2", slot_outpost_patrol, "$g_encountered_party"),
@@ -75,3 +82,15 @@
   [anyone,"fort_guard_talk_2", [], "All is quiet {sir/madam}. Nothing to report.", "fort_guard_talk_3",[]],
   [anyone|plyr,"fort_guard_talk_3", [], "Good. Keep your eyes open.", "close_window",[]],
 #-## Outposts end  
+]
+
+# Used by modmerger framework version >= 200 to merge stuff
+def modmerge(var_set):
+    try:
+		var_name_1 = "dialogs"
+		orig_dialogs = var_set[var_name_1]
+		orig_dialogs.extend(dialogs)
+		
+    except KeyError:
+        errstring = "Variable set does not contain expected variable: \"%s\"." % var_name_1
+        raise ValueError(errstring)

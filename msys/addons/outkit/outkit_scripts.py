@@ -9,7 +9,19 @@
 # ATTENTION: Copy only the stuff between "Outposts begin" and "Outposts end"
 # The rest of the code is just to help you in locating the script's place
 
+from header_common import *
+from header_operations import *
+from module_constants import *
+from module_constants import *
+from header_parties import *
+from header_skills import *
+from header_items import *
+from header_terrain_types import *
+from header_mission_templates import *
+
+
 # start of snippet
+thing = [
            (try_begin),
              (lt, "$g_encountered_party_2",0), #Normal encounter. Not battle or siege.
              (try_begin),
@@ -50,10 +62,12 @@
              (else_try),
 
 # end of snippet
+]
 
 # WHERE TO PUT THIS:
 # At the end is good.
 
+scripts = [
 #-## Outposts begin
   ("setup_outpost_scene",
     [
@@ -230,3 +244,14 @@
      (agent_set_scripted_destination, ":agent_id", pos1, 0),
   ]),
  #-## Outposts end
+]
+ 
+# Used by modmerger framework version >= 200 to merge stuff
+def modmerge(var_set):
+    try:
+        var_name_1 = "scripts"
+        orig_scripts = var_set[var_name_1]
+        orig_scripts.extend(scripts) 
+    except KeyError:
+        errstring = "Variable set does not contain expected variable: \"%s\"." % var_name_1
+        raise ValueError(errstring)

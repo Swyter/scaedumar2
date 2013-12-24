@@ -3,6 +3,11 @@
 #        You need to place them in your module_game_menus.
 #-#######################################
 
+from header_game_menus import *
+from module_constants import *
+from header_items import *
+from header_parties import *
+from header_music import *
 
 ######## ATTENTION:
 # I experienced a bug in which the fort would disappear after leaving it. Be sure to test this.
@@ -13,11 +18,12 @@
 # WHERE TO PUT THIS:
 # Somewhere in the camp menus. I placed it in camp_action.
 
+outkit_camp_menu = [
 	#-## Outposts begin
 	   ("action_manage_outposts",[],"Manage your Outposts.",
        [(jump_to_menu, "mnu_manage_outposts")]),
 	#-## Outposts end
-
+]
 
 
 
@@ -27,6 +33,7 @@
 # WHERE TO PLACE THIS: 
 # Wherever you want. In the end is good.
 
+game_menus = [
 #-## Outposts
 	 ("manage_outposts", 0, "The Outpost Management Menu. ^^ Choose an action:", "none", [],
          [("build_outpost", [(this_or_next|neg|party_slot_ge, "p_outpost_1", slot_outpost_level, 1),(neg|party_slot_ge, "p_outpost_2", slot_outpost_level, 1)], 
@@ -648,5 +655,36 @@
 		  
       ]
   ),
-  	 
 #-## Outposts end
+]
+
+
+from util_wrappers import *
+from util_common import *
+
+# Used by modmerger framework version >= 200 to merge stuff
+def modmerge(var_set):
+    try:
+        var_name_1 = "game_menus"
+        orig_game_menus = var_set[var_name_1]
+        
+        
+        #swy--insert new menu option in the camp menu!
+        try:
+          find_i = list_find_first_match_i(orig_game_menus, "camp_action")
+          
+          codeblock = GameMenuWrapper(orig_game_menus[find_i]).GetMenuOptions()
+          codeblock.extend(outkit_camp_menu)
+
+        except:
+          import sys
+          print "Injection failed:", sys.exc_info()[1]
+          raise
+        
+        
+        #swy--additional game menus, inserted at the end!
+        orig_game_menus.extend(game_menus)
+        
+    except KeyError:
+        errstring = "Variable set does not contain expected variable: \"%s\"." % var_name_1
+        raise ValueError(errstring)
