@@ -50,17 +50,17 @@ def modmerge(var_set):
         var_name_1 = "game_menus"
         orig_game_menus = var_set[var_name_1]
         
-        
         #swy--inject the bridge battles scene selection snippet
         try:
           find_i = list_find_first_match_i(orig_game_menus, "simple_encounter")
           codeblock = GameMenuWrapper(orig_game_menus[find_i]).GetMenuOption("encounter_attack").GetConsequenceBlock()
         
-          pos = codeblock.FindLineMatching(
-            (eq, "$g_encounter_type", enctype_catched_during_village_raid),
+          pos = codeblock.FindLine(
+            D_SEARCH_FROM_BOTTOM | D_SEARCH_SCRIPTLINE,
+            (jump_to_scene, ":scene_to_use"),
           )
     
-          codeblock.InsertAfter(pos+4, bridge_battles_snip)
+          codeblock.InsertAfter(pos, bridge_battles_snip)
 
         except:
           import sys
