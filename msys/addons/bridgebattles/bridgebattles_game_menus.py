@@ -3,13 +3,15 @@ from module_constants import *
 from header_items import *
 from header_parties import *
 from header_music import *
+from ID_parties import *
+from ID_scenes import *
 
 bridge_battles_snip = [
  (else_try), #Arch3r & Swyter#
   (party_get_position, pos1, "p_main_party"),
   
   (assign,":closest_distance", 100),
-  (assign,":closest_bridge",    -1)
+  (assign,":closest_bridge",    -1),
   
   #swy--itinerate along all the existing bridges and find the closest one
   (try_for_range,":cur_bridge", "p_bridge_1", p_bridge_14 + 1),
@@ -58,6 +60,7 @@ def modmerge(var_set):
           pos = codeblock.FindLine(
             D_SEARCH_FROM_BOTTOM | D_SEARCH_SCRIPTLINE,
             (jump_to_scene, ":scene_to_use"),
+            None
           )
     
           codeblock.InsertAfter(pos, bridge_battles_snip)

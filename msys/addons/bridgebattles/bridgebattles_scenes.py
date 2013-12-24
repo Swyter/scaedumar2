@@ -43,7 +43,7 @@ def modmerge(var_set):
     try:
         var_name_1 = "scenes"
         orig_scenes = var_set[var_name_1]
-        orig_scenes.extend(outposts) 
+        orig_scenes.extend(bridges) 
     except KeyError:
         errstring = "Variable set does not contain expected variable: \"%s\"." % var_name_1
         raise ValueError(errstring)

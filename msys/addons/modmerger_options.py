@@ -31,8 +31,8 @@ mods_active = [
      "bridgebattles",
      # "customcommanderkit",
      # "diplomacy",
-     "freelancer",
-     "outkit",
+     # "freelancer",
+     # "outkit",
      # "pbod",
      # "seafaring",
 ]
