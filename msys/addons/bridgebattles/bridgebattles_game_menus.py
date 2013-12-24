@@ -32,9 +32,9 @@ bridge_battles_snip = [
   #swy--if a bridge has been selected in the loop, choose it!
   (gt,":closest_bridge", -1),
   
-  #swy-- scene_to_use = :cur_bridge + scn_bridge_1
-  #      93th scene ->  4             89 (-1)
-  (store_add,":scene_to_use", ":cur_bridge", scn_bridge_1 - 1),
+  #swy-- scene_to_use = :closest_bridge + scn_bridge_1
+  #      93th scene ->  4                 89 (-1)
+  (store_add,":scene_to_use", ":closest_bridge", scn_bridge_1 - 1),
   
   (set_jump_mission,"mt_lead_charge"),
   (jump_to_scene, ":scene_to_use"),
