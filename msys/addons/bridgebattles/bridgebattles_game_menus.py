@@ -35,10 +35,14 @@ bridge_battles_snip = [
   (gt,":closest_bridge", -1),
   
   #swy-- scene_to_use = :closest_bridge + scn_bridge_1
-  #      93th scene ->  4                 89 (-1)
+  #      93th scene ->  4th               89 (-1)
   (store_add,":scene_to_use", ":closest_bridge", scn_bridge_1 - 1),
   
-  (set_jump_mission,"mt_lead_charge"),
+ #(assign, reg0, ":closest_bridge"),
+ #(assign, reg1, ":scene_to_use"),
+ #(display_message, "@bridge no: {reg0}!  scene no: {reg1}"),
+  
+  (set_jump_mission, "mt_lead_charge"),
   (jump_to_scene, ":scene_to_use"),
 ]
 
