@@ -14,9 +14,11 @@ PBOD (Pre-Battle Orders & Deployment) by Caba`drin
 http://forums.taleworlds.com/index.php?topic=142816.0
 
 
-Diplomacy by Waihti
+D- Diplomacy by Waihti SVN-latest
 http://forums.taleworlds.com/index.php?board=176.0
 http://forums.taleworlds.com/index.php/topic,152114.0.html
+http://www.mbrepository.com/file.php?id=1887
+https://subversion.assembla.com/svn/diplomacy/
 
 
 CCK (Custom commander kit) by Rubik

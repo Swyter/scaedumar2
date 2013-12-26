@@ -28,7 +28,7 @@ mods_active = [
 #    "mod1",
 #    "mymod",
 #    "anothermod",
-     "bridgebattles",
+     # "bridgebattles",
      # "customcommanderkit",
      # "diplomacy",
      # "freelancer",
