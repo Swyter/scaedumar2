@@ -8,9 +8,9 @@ from module_constants import *
 #+FREELANCER start
 freelancer_version = 13
 #Floris or no Diplomacy:
-freelancer_can_use_item  = "script_troop_can_use_item" 
+#freelancer_can_use_item  = "script_troop_can_use_item" 
 #with Diplomacy: 
-#freelancer_can_use_item = "script_dplmc_troop_can_use_item"
+freelancer_can_use_item = "script_dplmc_troop_can_use_item"
 
 
 #Party Slots
